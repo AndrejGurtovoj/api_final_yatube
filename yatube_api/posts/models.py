@@ -56,11 +56,11 @@ class Follow(models.Model):
         verbose_name="На кого подписались", related_name="following",
     )
 
-    def __str__(self):
-        return f"{self.user}_to_{self.following}"
-
     class Meta:
         constraints = [models.UniqueConstraint(
             fields=["user", "following"],
             name="unique_follow"
         )]
+
+    def __str__(self):
+        return f"{self.user}_to_{self.following}"
