@@ -7,7 +7,9 @@ from .permission import IsAuthorOrReadOnly
 from rest_framework.pagination import LimitOffsetPagination
 
 from posts.models import Group, Post
-from .serializers import GroupSerializer, PostSerializer, CommentSerializer, FollowSerializer
+from .serializers import (
+    GroupSerializer, PostSerializer,
+    CommentSerializer, FollowSerializer)
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -41,8 +43,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         return post.comments.all()
 
 
-class FollowList(
-    mixins.CreateModelMixin,
+class FollowList(mixins.CreateModelMixin,
     mixins.ListModelMixin,
     viewsets.GenericViewSet):
     serializer_class = FollowSerializer
