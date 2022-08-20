@@ -43,9 +43,10 @@ class CommentViewSet(viewsets.ModelViewSet):
         return post.comments.all()
 
 
-class FollowList(mixins.CreateModelMixin,
-                mixins.ListModelMixin,
-                viewsets.GenericViewSet):
+class FollowList(
+        mixins.CreateModelMixin,
+        mixins.ListModelMixin,
+        viewsets.GenericViewSet):
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = (filters.SearchFilter,)

@@ -60,8 +60,7 @@ class Follow(models.Model):
         return f"{self.user}_to_{self.following}"
 
     class Meta:
-        constraints = [models.UniqueConstraint
-        (
+        constraints = [models.UniqueConstraint(
             fields=["user", "following"],
-        name="unique_follow"
+            name="unique_follow"
         )]
